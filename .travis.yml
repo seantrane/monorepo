@@ -52,4 +52,5 @@ jobs:
     - stage: deploy
       name: 'Publish and Release'
       script:
-        - lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo"
+        - echo "Release is skipped until enabled..."
+        # - lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo"
