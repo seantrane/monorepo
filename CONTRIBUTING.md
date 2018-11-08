@@ -17,11 +17,11 @@
 As a contributor, here are the guidelines we would like you to follow:
 
 - [Code of conduct](https://github.com/seantrane/monorepo/blob/master/CODE_OF_CONDUCT.md)
-- [How can I contribute?](https://github.com/seantrane/engineering/blob/master/CONTRIBUTING.md#how-can-i-contribute)
-- [Using the issue tracker](https://github.com/seantrane/engineering/blob/master/CONTRIBUTING.md#using-the-issue-tracker)
-- [Submitting a Pull Request](https://github.com/seantrane/engineering/blob/master/CONTRIBUTING.md#submitting-a-pull-request)
-- [Coding rules](https://github.com/seantrane/engineering/blob/master/CONTRIBUTING.md#coding-rules)
-- [Working with code](https://github.com/seantrane/engineering/blob/master/CONTRIBUTING.md#working-with-code)
+- [How can I contribute?](#how-can-i-contribute)
+- [Using the issue tracker](#using-the-issue-tracker)
+- [Submitting a Pull Request](#submitting-a-pull-request)
+- [Coding rules](#coding-rules)
+- [Working with code](#working-with-code)
 
 We also recommend to read [How to Contribute to Open Source](https://opensource.guide/how-to-contribute).
 

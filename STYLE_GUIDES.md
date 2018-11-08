@@ -59,6 +59,7 @@ The type must be one of the following:
 | Type         | Description                                                                                                 |
 |--------------|-------------------------------------------------------------------------------------------------------------|
 | **build**    | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
+| **chore**    | Administrative and management tasks                                                                         |
 | **ci**       | Changes to the CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
 | **docs**     | Documentation only changes                                                                                  |
 | **feat**     | A new feature                                                                                               |
