@@ -40,7 +40,7 @@ jobs:
     - stage: test
       name: 'Checks and Tests'
       script:
-        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || echo "Skipping greenkeeper-lockfile-update";'
+        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || exit 0;'
         - npm audit
         - commitlint-travis
         # - lerna run lint
@@ -48,7 +48,8 @@ jobs:
         - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/monorepo
         # - lerna test
         # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
-        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || echo "Skipping greenkeeper-lockfile-upload";'
+        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || exit 0;'
+        - '[[ $TRAVIS_PULL_REQUEST != "false" ]] && npx semantic-release-github-pr || exit 0;'
     - stage: deploy
       name: 'Publish and Release'
       script:
