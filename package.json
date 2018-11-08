@@ -32,7 +32,8 @@
     "sass-lint": "^1.12.1",
     "semantic-release": "^15.10.8",
     "semantic-release-monorepo": "^6.1.1",
-    "semantic-release-monorepo-hooks": "^2.6.2"
+    "semantic-release-monorepo-hooks": "^2.6.2",
+    "shx": "^0.3.2"
   },
   "config": {
     "commitizen": {
