@@ -8,6 +8,7 @@
   "repository": "github:seantrane/monorepo",
   "bugs": "https://github.com/seantrane/monorepo/issues",
   "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
     "git:commit": "git-cz",
     "lerna": "lerna",
     "lint:md": "markdownlint -i 'node_modules/' -c '.markdownlint.yaml' './'",
