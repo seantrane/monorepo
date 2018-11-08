@@ -31,7 +31,13 @@ install:
   - lerna bootstrap --hoist
 stages:
   - test
-  - success
+  - name: pass
+    if: type = pull_request
+        AND branch = master
+  - name: deploy
+    if: repo = seantrane/monorepo
+        AND type != pull_request
+        AND branch = master
 jobs:
   include:
     - stage: test
@@ -46,16 +52,12 @@ jobs:
         # - lerna run test
         # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || exit 0;'
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || exit 0;'
-    - stage: success
+    - stage: pass
       name: 'Pull Requests'
-      if: type = pull_request
-          AND branch = master
       script:
-        - 'npx semantic-release-github-pr || exit 0;'
-    - name: 'Publish and Release'
-      if: repo = seantrane/monorepo
-          AND type != pull_request
-          AND branch = master
+        - '[[ $TRAVIS_PULL_REQUEST != "false" ]] && npx semantic-release-github-pr || exit 0;'
+    - stage: deploy
+      name: 'Publish and Release'
       script:
         - echo "Release is skipped until enabled..."
         # - lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo"
