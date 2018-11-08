@@ -55,8 +55,24 @@ git clone https://github.com/seantrane/monorepo.git monorepo && cd monorepo
 ## Install Dependencies <a id="install-dependencies"></a>
 
 ```sh
+# Install lerna globally
+npm install -g lerna
+# Install repo dependencies
 npm install
+# Link local packages together and install remaining package dependencies
+lerna bootstrap
+# List local packages
+lerna list
 ```
+
+## Important Links <a id="important-links"></a>
+
+- [Learn how to use `lerna`](https://github.com/lerna/lerna#readme)
+- [Create a new lerna-managed package](https://github.com/lerna/lerna/tree/master/commands/create#readme) `lerna create <name> [loc]`
+- [Add a dependency to matched packages](https://github.com/lerna/lerna/tree/master/commands/add#readme) `lerna add <package>[@version] [--dev] [--exact]`
+- [Run an npm script in each package that contains that script](https://github.com/lerna/lerna/tree/master/commands/run#readme) `lerna run <script> -- [..args]`
+- [Run an arbitrary command in each package](https://github.com/lerna/lerna/tree/master/commands/exec#readme) `lerna exec -- <command> [..args]`
+- [Remove the node_modules directory from all packages](https://github.com/lerna/lerna/tree/master/commands/clean#readme) `lerna clean`
 
 ---
 
