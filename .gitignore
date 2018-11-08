@@ -59,6 +59,7 @@ Thumbs.db
 /connect.lock
 /libpeerconnection.log
 debug.log
+lerna-debug.log
 npm-debug.log
 testem.log
 yarn-error.log
