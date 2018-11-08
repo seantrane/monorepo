@@ -29,12 +29,6 @@ before_install:
 install:
   - travis_retry npm install
   - lerna bootstrap --hoist
-stages:
-  - test
-  - name: deploy
-    if: repo = seantrane/monorepo
-        AND type != pull_request
-        AND branch = master
 jobs:
   include:
     - stage: test
@@ -46,12 +40,19 @@ jobs:
         # - lerna run lint
         # - lerna run build
         - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/monorepo
-        # - lerna test
-        # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
+        # - lerna run test
+        # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || exit 0;'
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || exit 0;'
-        - '[[ $TRAVIS_PULL_REQUEST != "false" ]] && npx semantic-release-github-pr || exit 0;'
-    - stage: deploy
-      name: 'Publish and Release'
+    - stage: success
+      name: 'Pull Requests'
+      if: type = pull_request
+          AND branch = master
+      script:
+        - 'npx semantic-release-github-pr || exit 0;'
+    - name: 'Publish and Release'
+      if: repo = seantrane/monorepo
+          AND type != pull_request
+          AND branch = master
       script:
         - echo "Release is skipped until enabled..."
         # - lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo"
