@@ -3,27 +3,45 @@ const output = hooks();
 
 const publish = output.isLastModified
   ? [
-    '@semantic-release/github',
-    '@semantic-release/npm'
+    {
+      path: '@semantic-release/exec',
+      cmd: 'echo "Execute publish/deploy commands and scripts"'
+    },
+    '@semantic-release/github'
   ]
   : [
-    '@semantic-release/npm'
+    '@semantic-release/github'
   ];
 
 module.exports = {
   branch: 'master',
   tagFormat: 'v${version}',
+  verifyConditions: [
+    '@semantic-release/changelog',
+    '@semantic-release/npm',
+    '@semantic-release/git',
+    '@semantic-release/github'
+  ],
+  // verifyRelease: [
+  //   '@semantic-release/npm',
+  //   '@semantic-release/github'
+  // ]
+  //   .map(require)
+  //   .map(x => x.verifyConditions),
   prepare: [
     {
-      "path": "@semantic-release/changelog",
-      "changelogTitle": "# CHANGELOG"
+      path: '@semantic-release/changelog',
+      changelogTitle: '# CHANGELOG'
     },
     '@semantic-release/npm',
     '@semantic-release/git'
   ],
   publish: publish,
-  verifyConditions: ['@semantic-release/npm', '@semantic-release/github'],
-  /* verifyRelease: ['@semantic-release/npm', '@semantic-release/github']
-    .map(require)
-    .map(x => x.verifyConditions), */
+  success: [
+    '@semantic-release/github'
+  ],
+  fail: [
+    '@semantic-release/github'
+  ],
+  npmPublish: false
 };
