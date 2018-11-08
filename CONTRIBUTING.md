@@ -60,7 +60,9 @@ npm install -g lerna
 # Install repo dependencies
 npm install
 # Link local packages together and install remaining package dependencies
-lerna bootstrap
+lerna bootstrap --hoist
+# or
+npm run bootstrap
 # List local packages
 lerna list
 ```
