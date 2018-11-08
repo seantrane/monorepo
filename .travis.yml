@@ -29,6 +29,9 @@ before_install:
 install:
   - travis_retry npm install
   - lerna bootstrap --hoist
+stages:
+  - test
+  - success
 jobs:
   include:
     - stage: test
