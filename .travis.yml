@@ -14,6 +14,8 @@ services:
 addons:
   sonarcloud:
     organization: "seantrane-github"
+git:
+  depth: false
 branches:
   only:
     - master
@@ -46,10 +48,10 @@ jobs:
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || echo "Skipping greenkeeper-lockfile-update";'
         - npm audit
         - commitlint-travis
-        # - lerna run lint
-        # - lerna run build
+        - npm run lint
+        # - npm run build
         - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/monorepo
-        # - lerna run test
+        - npm run test
         # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || echo "Skipping greenkeeper-lockfile-upload";'
     - stage: pass
