@@ -20,13 +20,20 @@
 
 ## About the Repository <a id="about"></a>
 
-More information coming soon.
+This is a monorepo for the management of many packages. There are a few dependencies that make this possible;
+
+- [lerna](https://lernajs.io/): a tool for managing *JavaScript* projects with multiple packages.
+- [semantic-release-monorepo](https://github.com/Updater/semantic-release-monorepo): use [semantic-release](https://github.com/semantic-release/semantic-release) within a monorepo.
+
+Read [CONTRIBUTING.md](https://github.com/seantrane/monorepo/blob/master/CONTRIBUTING.md) documentation for more details.
 
 ## Install <a id="install"></a>
 
 ```sh
-# install dependencies
+# Install repo dependencies
 npm install
+# Link local packages together and install remaining package dependencies
+npm run bootstrap
 ```
 
 ## Usage <a id="usage"></a>
@@ -34,7 +41,8 @@ npm install
 ### CLI
 
 ```sh
-# TBD
+# List local packages
+npm run lerna -- list
 ```
 
 > :point_up: _more instructions coming soon._
@@ -51,7 +59,7 @@ Contributions are always appreciated. Read [CONTRIBUTING.md](https://github.com/
 
 ## Changelog <a id="changelog"></a>
 
-Release details are documented in the [CHANGELOG.md](https://github.com/seantrane/monorepo/blob/master/CHANGELOG.md) file, and on the [GitHub Releases page](https://github.com/seantrane/monorepo/releases).
+Release details are documented in the CHANGELOG.md file of each package, and on the [GitHub Releases page](https://github.com/seantrane/monorepo/releases).
 
 ---
 
