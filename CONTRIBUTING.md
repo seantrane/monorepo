@@ -88,10 +88,12 @@ seantrane/monorepo/
  │       │   └─ <package>.test.ts  * unit tests for source code
  │       │
  │       ├─ src/                   * source code directory
- │       │   └─ <package>.js       * source code
+ │       │   └─ <package>.ts       * source code
  │       │
- │       ├─ package.json           * <package> config, required for `npm run <script>`
+ │       ├─ mocha.opts @ ->        * Symlink to Mocha config in repo root directory
+ │       ├─ package.json           * <package> config
  │       ├─ README.md              * each <package> should have a README with details therein
+ │       ├─ tsconfig.json          * <package> TypeScript configuration, extends repo config
  │       :
  │
  ├─ .markdownlint.yaml             * Markdown-lint rules and config
@@ -106,9 +108,13 @@ seantrane/monorepo/
  ├─ mocha.opts                     * Mocha config
  ├─ package-lock.json              * npm package dependency lock file
  ├─ package.json                   * monorepo package config
+ ├─ README.md                      * the repository's README file
  ├─ ROADMAP.md                     * repo and packages roadmap
+ ├─ sonar-project.properties       * SonarQube/SonarCloud configuration
  ├─ STYLE_GUIDES.md                * Style guides, standards and practices
- └─ tslint.json                    * TSLint config
+ ├─ tsconfig.json                  * TypeScript configuration
+ ├─ typedoc.json                   * TypeScript documentation generator
+ └─ tslint.json                    * TypeScript Linter configuration
 ```
 
 ---
