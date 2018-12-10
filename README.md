@@ -51,7 +51,7 @@ npm run lerna -- list
 
 ## Support <a id="support"></a>
 
-Submit an [issue](https://github.com/seantrane/monorepo/issues/new)
+Submit an [issue](https://github.com/seantrane/monorepo/issues/new), in which you should provide as much detail as necessary for your issue.
 
 ## Contributing <a id="contributing"></a>
 
@@ -65,6 +65,6 @@ Release details are documented in the CHANGELOG.md file of each package, and on 
 
 ## License <a id="license"></a>
 
-[MIT License](https://github.com/seantrane/monorepo/blob/master/LICENSE)
+[ISC License](https://github.com/seantrane/monorepo/blob/master/LICENSE)
 
 Copyright (c) 2018 [Sean Trane Sciarrone](https://github.com/seantrane)

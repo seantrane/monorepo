@@ -3,7 +3,7 @@
   "description": "A monorepo starter kit",
   "version": "0.0.0-development",
   "author": "@seantrane",
-  "license": "MIT",
+  "license": "ISC",
   "homepage": "https://github.com/seantrane/monorepo#readme",
   "repository": "github:seantrane/monorepo",
   "bugs": "https://github.com/seantrane/monorepo/issues",
