@@ -1,0 +1,38 @@
+{
+  "name": "@seantrane/hello-world",
+  "version": "0.0.0",
+  "description": "Description of this package",
+  "author": "@seantrane",
+  "license": "ISC",
+  "homepage": "https://github.com/seantrane/monorepo/tree/master/packages/hello-world#readme",
+  "repository": "github:seantrane/monorepo",
+  "bugs": "https://github.com/seantrane/monorepo/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/hello-world.js",
+  "typings": "lib/hello-world.d.ts",
+  "directories": {
+    "dist": "lib",
+    "lib": "lib",
+    "output": "coverage",
+    "root": "../..",
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "shx rm -rf $npm_package_directories_dist $npm_package_directories_output .nyc_output",
+    "lint:ts:report": "tslint -t json -o $npm_package_directories_output/unit-report.json $npm_package_directories_src/**/*.ts",
+    "lint:ts": "tslint $npm_package_directories_src/**/*.ts",
+    "lint": "npm run lint:ts",
+    "test:mocha": "nyc mocha --opts $npm_package_directories_root/mocha.opts ./**/*.test.ts",
+    "test": "npm run test:mocha && npm run lint:ts:report"
+  },
+  "nyc": {
+    "extends": "@seantrane/nyc-config-typescript"
+  }
+}
