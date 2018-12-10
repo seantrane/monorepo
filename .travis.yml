@@ -27,15 +27,12 @@ env:
 before_install:
   # package-lock.json was introduced in npm@5
   - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
-  - npm install -g github-label-sync greenkeeper-lockfile lerna
+  - npm install -g github-label-sync greenkeeper-lockfile lerna typescript
 install:
   - travis_retry npm install
   - lerna bootstrap --hoist
 stages:
   - test
-  - name: pass
-    if: type = pull_request
-        AND branch = master
   - name: deploy
     if: repo = seantrane/monorepo
         AND type != pull_request
@@ -46,20 +43,16 @@ jobs:
       name: 'Checks and Tests'
       script:
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || echo "Skipping greenkeeper-lockfile-update";'
-        - npm audit
+        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && npm audit || echo "Skipping npm audit";'
         - commitlint-travis
         - npm run lint
         # - npm run build
         - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/monorepo
-        - npm run test
-        # - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
+        - npm test
+        - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
         - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || echo "Skipping greenkeeper-lockfile-upload";'
-    - stage: pass
-      name: 'Pull Requests'
-      script:
-        - '[[ $TRAVIS_PULL_REQUEST != "false" ]] && npx semantic-release-github-pr || echo "Skipping semantic-release-github-pr";'
     - stage: deploy
       name: 'Publish and Release'
       script:
         - echo "Release is skipped until enabled..."
-        # - lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo"
+        # - npm run semantic-release
