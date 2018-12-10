@@ -1,7 +1,6 @@
 *.md
 !CHANGELOG.md
 !README.md
-!/lib
 .bowerrc
 .dockerignore
 .github

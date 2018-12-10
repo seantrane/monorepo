@@ -55,6 +55,7 @@ Thumbs.db
 .localrc
 .lock-wscript
 .netrc
+.nyc_output
 /.sass-cache
 /connect.lock
 /libpeerconnection.log
@@ -81,6 +82,8 @@ _site
 /logs
 /mocha.json
 /out-tsc
+/packages/*/coverage
+/packages/*/lib
 /temp
 /tmp
 /typings
