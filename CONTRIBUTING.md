@@ -55,16 +55,14 @@ git clone https://github.com/seantrane/monorepo.git monorepo && cd monorepo
 ## Install Dependencies <a id="install-dependencies"></a>
 
 ```sh
-# Install lerna globally
+# Install lerna globally (to use lerna binary at command line)
 npm install -g lerna
-# Install repo dependencies
+# Install repo dependencies, link local packages together and install remaining package dependencies
 npm install
-# Link local packages together and install remaining package dependencies
-lerna bootstrap --hoist
-# or
-npm run bootstrap
 # List local packages
-lerna list
+npm run list
+# Run tests across all packages
+npm test
 ```
 
 ## Important Links <a id="important-links"></a>
