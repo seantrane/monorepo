@@ -213,15 +213,15 @@ git push origin <topic-branch-name>
 
 [Fork](https://guides.github.com/activities/forking/#fork) the project, [clone](https://guides.github.com/activities/forking/#clone) your fork, configure the remotes and install the dependencies:
 
-```bash
+```sh
 # Clone your fork of the repo into the current directory
-$ git clone https://github.com/seantrane/monorepo
+git clone https://github.com/seantrane/monorepo
 # Navigate to the newly cloned directory
-$ cd monorepo
+cd monorepo
 # Assign the original repo to a remote called "upstream"
-$ git remote add upstream https://github.com/seantrane/monorepo
+git remote add upstream https://github.com/seantrane/monorepo
 # Install the dependencies
-$ npm install
+npm install
 ```
 
 ---
