@@ -24,12 +24,14 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
-    "clean": "shx rm -rf $npm_package_directories_dist $npm_package_directories_output .nyc_output",
+    "build": "npm run clean:dist && tsc",
+    "clean:dist": "shx rm -rf $npm_package_directories_dist",
+    "clean:output": "shx rm -rf $npm_package_directories_output .nyc_output",
+    "clean": "npm run clean:dist && npm run clean:output",
     "lint:ts:report": "tslint -t json -o $npm_package_directories_output/unit-report.json $npm_package_directories_src/**/*.ts",
     "lint:ts": "tslint $npm_package_directories_src/**/*.ts",
     "lint": "npm run lint:ts",
-    "test:mocha": "nyc mocha --opts $npm_package_directories_root/mocha.opts ./**/*.test.ts",
+    "test:mocha": "npm run clean:output && nyc mocha --opts $npm_package_directories_root/mocha.opts ./**/*.test.ts",
     "test": "npm run test:mocha && npm run lint:ts:report"
   },
   "nyc": {
