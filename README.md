@@ -30,10 +30,8 @@ Read [CONTRIBUTING.md](https://github.com/seantrane/monorepo/blob/master/CONTRIB
 ## Install <a id="install"></a>
 
 ```sh
-# Install repo dependencies
+# Install repo dependencies, link local packages together and install remaining package dependencies
 npm install
-# Link local packages together and install remaining package dependencies
-npm run bootstrap
 ```
 
 ## Usage <a id="usage"></a>
@@ -42,7 +40,7 @@ npm run bootstrap
 
 ```sh
 # List local packages
-npm run lerna -- list
+npm run list
 ```
 
 > :point_up: _more instructions coming soon._
