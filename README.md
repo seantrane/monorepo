@@ -6,6 +6,8 @@
 
 [![Build Status](https://travis-ci.com/seantrane/monorepo.svg?branch=master)](https://travis-ci.com/seantrane/monorepo) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+[![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=seantrane%3Amonorepo&metric=coverage)](https://sonarcloud.io/component_measures?id=seantrane%3Amonorepo&metric=coverage) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=seantrane%3Amonorepo&metric=security_rating)](https://sonarcloud.io/component_measures?id=seantrane%3Amonorepo&metric=security_rating) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=seantrane%3Amonorepo&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=seantrane%3Amonorepo&metric=reliability_rating) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=seantrane%3Amonorepo&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=seantrane%3Amonorepo&metric=sqale_rating)
+
 ## Table of Contents
 
 - [About the Repository](#about)
