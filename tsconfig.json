@@ -24,10 +24,11 @@
     "packages/*/src/**/*"
   ],
   "exclude": [
-    "__tests__/**/*",
-    "tests/**/*",
-    "test.ts",
+    "**/*.d.ts",
+    "**/*.spec.ts",
     "**/*.test.ts",
-    "**/*.spec.ts"
+    "__tests__/**/*",
+    "test.ts",
+    "tests/**/*"
   ]
 }
