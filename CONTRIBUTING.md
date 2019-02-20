@@ -49,7 +49,7 @@ Thank you for contributing.
 ## Clone the Repository <a id="clone-repo"></a>
 
 ```sh
-git clone https://github.com/seantrane/monorepo.git monorepo && cd monorepo
+git clone git@github.com:seantrane/monorepo.git monorepo && cd monorepo
 ```
 
 ## Install Dependencies <a id="install-dependencies"></a>
@@ -215,11 +215,11 @@ git push origin <topic-branch-name>
 
 ```sh
 # Clone your fork of the repo into the current directory
-git clone https://github.com/seantrane/monorepo
+git clone git@github.com:seantrane/monorepo
 # Navigate to the newly cloned directory
 cd monorepo
 # Assign the original repo to a remote called "upstream"
-git remote add upstream https://github.com/seantrane/monorepo
+git remote add upstream git@github.com:seantrane/monorepo
 # Install the dependencies
 npm install
 ```
