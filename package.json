@@ -28,7 +28,7 @@
     "lint:changed": "lerna run lint --since master",
     "lint:md": "markdownlint -i '**/node_modules/**' -c '.markdownlint.yaml' './'",
     "lint:packages": "lerna run lint",
-    "lint:sh": "docker pull koalaman/shellcheck:stable && docker run -v \"$PWD:/mnt\" koalaman/shellcheck ./$npm_package_directories_lib/**/*.sh && docker kill koalaman/shellcheck 2> /dev/null; docker rm -f koalaman/shellcheck 2> /dev/null; docker rmi -f koalaman/shellcheck:stable 2> /dev/null",
+    "lint:sh": "docker pull koalaman/shellcheck:stable && docker run --rm -v \"$PWD:/mnt\" koalaman/shellcheck ./$npm_package_directories_lib/**/*.sh && docker kill koalaman/shellcheck 2> /dev/null; docker rm -f koalaman/shellcheck 2> /dev/null; docker rmi -f koalaman/shellcheck:stable 2> /dev/null",
     "lint:styles": "sass-lint -v -q",
     "lint:ts:report": "tslint -t json -o $npm_package_directories_output/unit-report.json $npm_package_directories_lib/**/*.ts",
     "lint:ts": "tslint $npm_package_directories_lib/**/*.ts",
