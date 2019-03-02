@@ -48,10 +48,9 @@
     "uninstall": "npm run clean && npm run uninstall:packages && shx rm -Rf node_modules"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.5.1",
-    "@commitlint/config-conventional": "^7.5.0",
-    "@commitlint/travis-cli": "^7.5.1",
-    "@seantrane/nyc-config-typescript": "^1.0.0",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/travis-cli": "^7.5.2",
+    "@seantrane/nyc-config-typescript": "^2.0.0",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/commit-analyzer": "^6.1.0",
     "@semantic-release/exec": "^3.3.2",
@@ -59,33 +58,33 @@
     "@semantic-release/github": "^5.2.10",
     "@semantic-release/npm": "^5.1.4",
     "@semantic-release/release-notes-generator": "^7.1.4",
-    "@types/chai": "^4.1.4",
+    "@types/chai": "^4.1.7",
     "@types/chai-as-promised": "^7.1.0",
-    "@types/lodash": "^4.14.120",
-    "@types/mocha": "^5.2.5",
-    "@types/node": "^10.5.7",
-    "@types/sinon": "^5.0.5",
-    "@types/sinon-chai": "^3.2.0",
-    "chai": "^4.1.2",
+    "@types/lodash": "^4.14.121",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.10.4",
+    "@types/sinon": "^7.0.8",
+    "@types/sinon-chai": "^3.2.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "commitizen": "^3.0.5",
+    "commitizen": "^3.0.7",
+    "commitlint-config-awesome": "^1.0.2",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.3.1",
-    "istanbul": "^0.4.5",
-    "lerna": "^3.4.3",
-    "markdownlint-cli": "^0.13.0",
+    "lerna": "^3.13.1",
+    "markdownlint-cli": "^0.14.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
+    "nyc": "^13.3.0",
     "sass-lint": "^1.12.1",
     "semantic-release": "^15.13.3",
     "semantic-release-monorepo": "^6.1.1",
     "shx": "^0.3.2",
-    "sinon": "^6.3.5",
-    "sinon-chai": "^3.2.0",
+    "sinon": "^7.2.6",
+    "sinon-chai": "^3.3.0",
     "ts-node": "~7.0.0",
-    "tslint": "^5.11.0",
-    "typedoc": "^0.13.0",
-    "typescript": "^3.1.6"
+    "tslint": "^5.13.1",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.0"
   },
   "config": {
     "commitizen": {
@@ -94,15 +93,8 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "header-max-length": [
-        0,
-        "always",
-        80
-      ]
-    }
+      "awesome"
+    ]
   },
   "husky": {
     "hooks": {
