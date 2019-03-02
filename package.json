@@ -7,12 +7,14 @@
   "homepage": "https://github.com/seantrane/monorepo#readme",
   "repository": "github:seantrane/monorepo",
   "bugs": "https://github.com/seantrane/monorepo/issues",
+  "private": true,
   "directories": {
     "lib": "packages",
     "output": "coverage"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
+    "add": "lerna add",
+    "bootstrap": "lerna bootstrap",
     "build:changed": "lerna run build --since master",
     "build:packages": "lerna run build",
     "build": "npm run build:packages",
@@ -23,7 +25,6 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts",
     "docs": "typedoc --options typedoc.json --exclude '**/*.test.ts' ./$npm_package_directories_lib/",
     "git:commit": "git-cz",
-    "istanbul": "istanbul",
     "lerna": "lerna",
     "lint:changed": "lerna run lint --since master",
     "lint:md": "markdownlint -i '**/node_modules/**' -c '.markdownlint.yaml' './'",
@@ -34,18 +35,14 @@
     "lint:ts": "tslint $npm_package_directories_lib/**/*.ts",
     "lint": "npm run lint:md && npm run lint:styles && npm run lint:sh && npm run lint:changed",
     "list": "lerna list",
-    "markdownlint": "markdownlint",
-    "nyc": "nyc",
     "postinstall": "npm run bootstrap && npm run list",
-    "sass-lint": "sass-lint",
     "semantic-release": "lerna exec --concurrency 1 \"npx --no-install semantic-release -e semantic-release-monorepo\"",
     "test:changed": "lerna run test --since master",
     "test:mocha": "nyc mocha --opts mocha.opts $npm_package_directories_lib/**/*.test.ts",
     "test:packages": "lerna run test",
     "test": "npm run test:packages",
-    "typedoc": "typedoc",
     "uninstall:packages": "shx rm -Rf $npm_package_directories_lib/*/node_modules",
-    "uninstall": "npm run clean && npm run uninstall:packages && shx rm -Rf node_modules"
+    "uninstall": "npm run clean && lerna clean && shx rm -Rf node_modules"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
