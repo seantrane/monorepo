@@ -3,6 +3,7 @@ language: node_js
 node_js:
   - '8'
 cache:
+  bundler: true
   directories:
     - ~/.npm
     - node_modules
@@ -12,24 +13,30 @@ notifications:
 services:
   - docker
 addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
   sonarcloud:
-    organization: "seantrane-github"
+    organization: seantrane-github
 git:
   depth: false
 branches:
   only:
     - master
-    - /^greenkeeper.*$/
+    - /^release.*$/
 env:
   global:
     - PATH=$HOME/.local/bin:$PATH
     - PATH=$PWD:$PATH
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of some gems
 before_install:
   # package-lock.json was introduced in npm@5
   - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
-  - npm install -g github-label-sync greenkeeper-lockfile lerna typescript
+  - npm install -g github-label-sync lerna typescript
+  # - gem install jekyll htmlproofer
 install:
   - travis_retry npm install
+  # - travis_retry bundle install
 stages:
   - test
   - name: deploy
@@ -41,17 +48,27 @@ jobs:
     - stage: test
       name: 'Checks and Tests'
       script:
-        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || echo "Skipping greenkeeper-lockfile-update";'
-        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && npm audit || echo "Skipping npm audit";'
+        # - npm audit
         - commitlint-travis
-        - npm run lint
-        # - npm run build
         - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/monorepo
-        - npm test
-        - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
-        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || echo "Skipping greenkeeper-lockfile-upload";'
+        - npm run ci
+        - sonar-scanner
     - stage: deploy
       name: 'Publish and Release'
       script:
-        - echo "Release is skipped until enabled..."
-        # - npm run semantic-release
+        - npm run semantic-release
+    # - name: 'Deploy GitHub Pages'
+    #   script:
+    #     - JEKYLL_GITHUB_TOKEN="$GH_TOKEN" JEKYLL_ENV=production bundle exec jekyll build --destination _site
+    #   deploy: &pages
+    #     provider: pages
+    #     skip-cleanup: true
+    #     github-token: "$GH_TOKEN"
+    #     # name: Sean Trane
+    #     # email: seantrane@users.noreply.github.com
+    #     # keep-history: true
+    #     target-branch: gh-pages
+    #     local-dir: ./_site
+    #     on:
+    #       repo: seantrane/monorepo
+    #       branch: master
