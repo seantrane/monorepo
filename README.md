@@ -32,6 +32,8 @@ Read [CONTRIBUTING.md](https://github.com/seantrane/monorepo/blob/master/CONTRIB
 ## Install <a id="install"></a>
 
 ```sh
+# Install lerna globally (to use lerna binary at command line)
+npm install -g lerna
 # Install repo dependencies, link local packages together and install remaining package dependencies
 npm install
 ```
@@ -43,9 +45,17 @@ npm install
 ```sh
 # List local packages
 npm run list
+# Run tests across all packages
+npm test
+# Run linting, tests and builds across all packages
+npm run ci
+# Clean all auto-generated files
+npm run clean
+# Uninstall all packages
+npm run uninstall
 ```
 
-> :point_up: _more instructions coming soon._
+Read [CONTRIBUTING.md](https://github.com/seantrane/monorepo/blob/master/CONTRIBUTING.md) documentation for more details.
 
 ---
 
@@ -67,4 +77,4 @@ Release details are documented in the CHANGELOG.md file of each package, and on 
 
 [ISC License](https://github.com/seantrane/monorepo/blob/master/LICENSE)
 
-Copyright (c) 2018 [Sean Trane Sciarrone](https://github.com/seantrane)
+Copyright (c) 2018, [Sean Trane Sciarrone](https://github.com/seantrane)
