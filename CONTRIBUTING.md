@@ -57,19 +57,68 @@ git clone git@github.com:seantrane/monorepo.git monorepo && cd monorepo
 ```sh
 # Install lerna globally (to use lerna binary at command line)
 npm install -g lerna
+
 # Install repo dependencies, link local packages together and install remaining package dependencies
 npm install
+
 # List local packages
 npm run list
+
 # Run tests across all packages
-npm test
+npm run test
+
+# Run tests across changed packages
+npm run test:changed
+
+# Run linting across all packages
+npm run lint
+
+# Run builds across all packages
+npm run build
+
+# Run builds across changed packages
+npm run build:changed
+
+# Run linting, tests and builds across all packages
+npm run ci
+
+# Clean all auto-generated files
+npm run clean
+
+# Clean all auto-generated files within packages
+npm run clean:packages
+
+# Uninstall all packages
+npm run uninstall
+
+# Add dependency to a sub-package
+npm run add -- <package>[@version] [--dev] [--exact] [packages/...]
+
+npm run add -- pkg packages/hello-world
+# "dependencies": {
+#   "pkg": "^1.1.0"
+# }
+
+npm run add -- pkg@1.0.1 packages/hello-world
+# "dependencies": {
+#   "pkg": "^1.0.1"
+# }
+
+npm run add -- pkg@1.0.1 --exact packages/hello-world
+# "dependencies": {
+#   "pkg": "1.0.1"
+# }
+
+npm run add -- pkg --dev packages/hello-world
+# "devDependencies": {
+#   "pkg": "^1.1.0"
+# }
 ```
 
 ## Important Links <a id="important-links"></a>
 
 - [Learn how to use `lerna`](https://github.com/lerna/lerna#readme)
-- [Create a new lerna-managed package](https://github.com/lerna/lerna/tree/master/commands/create#readme) `lerna create <name> [loc]`
-- [Add a dependency to matched packages](https://github.com/lerna/lerna/tree/master/commands/add#readme) `lerna add <package>[@version] [--dev] [--exact]`
+- [Add a dependency to matched packages](https://github.com/lerna/lerna/tree/master/commands/add#readme) `lerna add <package>[@version] [--dev] [--exact] [packages/...]`
 - [Run an npm script in each package that contains that script](https://github.com/lerna/lerna/tree/master/commands/run#readme) `lerna run <script> -- [..args]`
 - [Run an arbitrary command in each package](https://github.com/lerna/lerna/tree/master/commands/exec#readme) `lerna exec -- <command> [..args]`
 - [Remove the node_modules directory from all packages](https://github.com/lerna/lerna/tree/master/commands/clean#readme) `lerna clean`
