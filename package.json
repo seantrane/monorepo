@@ -73,7 +73,7 @@
     "mocha": "^6.0.2",
     "nyc": "^13.3.0",
     "sass-lint": "^1.12.1",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "^17.2.3",
     "semantic-release-monorepo": "^6.1.1",
     "shx": "^0.3.2",
     "sinon": "^7.2.6",
